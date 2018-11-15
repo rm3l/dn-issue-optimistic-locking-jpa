@@ -35,7 +35,11 @@
             <property name="datanucleus.valuegeneration.transactionAttribute" value="EXISTING"/>
             <property name="datanucleus.rdbms.statementBatchLimit" value="-1"/>
             <property name="javax.persistence.schema-generation.create-database-schemas" value="true"/>
+            
+            
             <property name="datanucleus.cache.level2.type" value="none"/>
+            <property name="javax.persistence.sharedCache.mode" value="DISABLE_SELECTIVE"/>
+            
             <property name="datanucleus.rdbms.omitDatabaseMetaDataGetColumns" value="false"/>
             <property name="datanucleus.jmxType" value="default"/>
             <property name="datanucleus.manageRelationshipsChecks" value="false"/>
@@ -60,6 +64,11 @@
             <property name="javax.persistence.jdbc.user" value="SA"/>
             <property name="javax.persistence.jdbc.password" value=""/>
             <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
+
+            <property name="javax.persistence.cache.retrieveMode" value="BYPASS"/>
+            <property name="javax.persistence.cache.storeMode" value="BYPASS"/>
+            <property name="eclipselink.query-results-cache" value="false"/>
+            <property name="eclipselink.cache.shared.default" value="false"/>
         </properties>
     </persistence-unit>
 
@@ -79,6 +88,7 @@
             <property name="javax.persistence.jdbc.user" value="SA"/>
             <property name="javax.persistence.jdbc.password" value=""/>
             <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
+            <property name="hibernate.cache.use_second_level_cache" value="false"/>
         </properties>
     </persistence-unit>
 
