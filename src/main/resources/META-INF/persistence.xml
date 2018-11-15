@@ -6,15 +6,40 @@
 
     <persistence-unit name="MyTest">
         <!-- Add all of your model classes here -->
+        <class>mydomain.model.AbstractBaseJpaEntity</class>
+        <class>mydomain.model.AbstractIdentifiable</class>
+        <class>mydomain.model.Address</class>
         <class>mydomain.model.Person</class>
         <exclude-unlisted-classes />
         <properties>
             <!-- Update these datastore details if different -->
-            <property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:nucleus"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:nucleus;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;DATABASE_TO_UPPER=FALSE"/>
             <property name="javax.persistence.jdbc.user" value="sa"/>
             <property name="javax.persistence.jdbc.password" value=""/>
+            <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
 
             <property name="datanucleus.schema.autoCreateAll" value="true"/>
+
+
+            <property name="datanucleus.detachedState" value="loaded"/>
+            <property name="datanucleus.schema.validateAll" value="true"/>
+            <property name="datanucleus.DetachAllOnRollback" value="false"/>
+            <property name="datanucleus.persistenceByReachabilityAtCommit" value="false"/>
+            <property name="javax.persistence.schema-generation.database.action" value="create"/>
+            <property name="datanucleus.flush.optimised" value="true"/>
+            <property name="datanucleus.DetachAllOnCommit" value="false"/>
+            <property name="datanucleus.cache.collections.lazy" value="false"/>
+            <property name="datanucleus.detachAllOnCommit" value="false"/>
+            <property name="datanucleus.manageRelationships" value="false"/>
+            <property name="datanucleus.valuegeneration.transactionAttribute" value="EXISTING"/>
+            <property name="datanucleus.rdbms.statementBatchLimit" value="-1"/>
+            <property name="javax.persistence.schema-generation.create-database-schemas" value="true"/>
+            <property name="datanucleus.cache.level2.type" value="none"/>
+            <property name="datanucleus.rdbms.omitDatabaseMetaDataGetColumns" value="false"/>
+            <property name="datanucleus.jmxType" value="default"/>
+            <property name="datanucleus.manageRelationshipsChecks" value="false"/>
+            <property name="datanucleus.rdbms.stringDefaultLength" value="65536"/>
+            <property name="datanucleus.connectionPoolingType" value="None"/>
         </properties>
     </persistence-unit>
 
