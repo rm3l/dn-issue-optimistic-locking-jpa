@@ -4,7 +4,8 @@
     xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
         http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd" version="2.2">
 
-    <persistence-unit name="MyTest">
+    <persistence-unit name="mytest_datanucleus">
+        <provider>org.datanucleus.api.jpa.PersistenceProviderImpl</provider>
         <!-- Add all of your model classes here -->
         <class>mydomain.model.AbstractBaseJpaEntity</class>
         <class>mydomain.model.AbstractIdentifiable</class>
@@ -40,6 +41,44 @@
             <property name="datanucleus.manageRelationshipsChecks" value="false"/>
             <property name="datanucleus.rdbms.stringDefaultLength" value="65536"/>
             <property name="datanucleus.connectionPoolingType" value="None"/>
+        </properties>
+    </persistence-unit>
+
+    <persistence-unit name="mytest_eclipselink">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <!-- Add all of your model classes here -->
+        <class>mydomain.model.AbstractBaseJpaEntity</class>
+        <class>mydomain.model.AbstractIdentifiable</class>
+        <class>mydomain.model.Address</class>
+        <class>mydomain.model.Person</class>
+        <exclude-unlisted-classes>false</exclude-unlisted-classes>
+        <properties>
+            <property name="javax.persistence.jdbc.url"
+              value="jdbc:h2:mem:MyEclipseLink_DB;DB_CLOSE_DELAY=-1"/>
+            <property name="javax.persistence.schema-generation.create-database-schemas" value="true"/>
+            <property name="javax.persistence.schema-generation.database.action" value="create"/>
+            <property name="javax.persistence.jdbc.user" value="SA"/>
+            <property name="javax.persistence.jdbc.password" value=""/>
+            <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
+        </properties>
+    </persistence-unit>
+
+    <persistence-unit name="mytest_hibernate">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <!-- Add all of your model classes here -->
+        <class>mydomain.model.AbstractBaseJpaEntity</class>
+        <class>mydomain.model.AbstractIdentifiable</class>
+        <class>mydomain.model.Address</class>
+        <class>mydomain.model.Person</class>
+        <exclude-unlisted-classes>false</exclude-unlisted-classes>
+        <properties>
+            <property name="javax.persistence.jdbc.url"
+              value="jdbc:h2:mem:MyHibernate_DB;DB_CLOSE_DELAY=-1"/>
+            <property name="javax.persistence.schema-generation.create-database-schemas" value="true"/>
+            <property name="javax.persistence.schema-generation.database.action" value="create"/>
+            <property name="javax.persistence.jdbc.user" value="SA"/>
+            <property name="javax.persistence.jdbc.password" value=""/>
+            <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
         </properties>
     </persistence-unit>
 

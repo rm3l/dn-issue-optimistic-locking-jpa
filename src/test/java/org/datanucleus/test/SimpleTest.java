@@ -20,12 +20,15 @@ public class SimpleTest
 
     @BeforeClass
     public static void beforeAll() {
-        emf = Persistence.createEntityManagerFactory("MyTest");
+        emf = Persistence.createEntityManagerFactory(
+            "mytest_" + System.getProperty("profile"));
     }
 
     @AfterClass
     public static void afterAll() {
-        emf.close();
+        if (emf != null) {
+            emf.close();
+        }
     }
 
     @Test
@@ -48,7 +51,7 @@ public class SimpleTest
                 .collect(Collectors.toSet());
 
         //Persist with version
-        executeInTransaction((em) -> em.persist(personList));
+        executeInTransaction((em) -> personList.forEach(em::persist));
 
         //Perform an operation
         final Map<Long, Person> newPersonList = personList.stream()

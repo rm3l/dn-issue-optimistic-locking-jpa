@@ -7,7 +7,6 @@ import javax.persistence.*;
 public class Person extends AbstractIdentifiable
 {
     @Basic
-    @Access(AccessType.PROPERTY)
     private String uniqueName;
 
     @OneToOne(cascade = CascadeType.PERSIST)

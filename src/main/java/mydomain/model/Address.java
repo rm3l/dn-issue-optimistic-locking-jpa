@@ -21,11 +21,6 @@ public class Address extends AbstractIdentifiable {
     @Basic
     private String countryCode;
 
-    @Basic(fetch = FetchType.LAZY)
-    @Lob
-    @Access(AccessType.PROPERTY)
-    private String metadata;
-
     @ManyToOne(optional = false, cascade = CascadeType.PERSIST)
 //    @Transient
     private Person person;
@@ -78,14 +73,6 @@ public class Address extends AbstractIdentifiable {
         this.person = person;
     }
 
-    public String getMetadata() {
-        return metadata;
-    }
-
-    public void setMetadata(String metadata) {
-        this.metadata = metadata;
-    }
-
     public static class Builder {
         private final Address address = new Address();
 
@@ -116,11 +103,6 @@ public class Address extends AbstractIdentifiable {
 
         public Builder person(Person person) {
             this.address.setPerson(person);
-            return this;
-        }
-
-        public Builder metadata(String metadata) {
-            this.address.setMetadata(metadata);
             return this;
         }
 
